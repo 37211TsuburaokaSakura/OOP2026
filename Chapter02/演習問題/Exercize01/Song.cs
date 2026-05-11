@@ -19,11 +19,12 @@ namespace Exercize01 {
 
 
         //コンストラクタ
-        public Song(string Title, string Artist, int Length) {
-            this.Title = Title;
-            this.Artist = Artist;
-            this.Length = Length;
+        public Song(string title, string artist, int length) {
+            Title = title;
+            Artist = artist;
+            Length = length;
         }
+
     }
 
 
