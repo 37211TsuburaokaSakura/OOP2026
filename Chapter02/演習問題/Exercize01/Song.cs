@@ -12,7 +12,7 @@ namespace Exercize01 {
         public string Title { get; set; } = string.Empty;
 
         //アーティスト名
-        public string Artist { get; set; } = string.Empty;
+        public string ArtistName { get; set; } = string.Empty;
 
         //演奏時間
         public int Length { get; set; }
@@ -21,7 +21,7 @@ namespace Exercize01 {
         //コンストラクタ
         public Song(string title, string artist, int length) {
             Title = title;
-            Artist = artist;
+            ArtistName = artist;
             Length = length;
         }
 

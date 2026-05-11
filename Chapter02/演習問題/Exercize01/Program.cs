@@ -5,15 +5,15 @@ namespace Exercize01 {
             // 2.1.3
             var songs = new Song[] {
                 new Song("Let it be", "The Beatles", 243),
-   
+
                 new Song("Bridge Over Troubled Water", "Simon & Garfunkel", 293),
-   
+
                 new Song("Close To You", "Carpenters", 276),
-   
+
                 new Song("Honesty", "Billy Joel", 231),
-   
+
                 new Song("I Will Always Love You", "Whitney Houston", 273),
-};
+            };
             PrintSongs(songs);
         }
 
@@ -22,6 +22,11 @@ namespace Exercize01 {
         //以下のメソッドが自動的に生成される
         //2.1.4
         private static void PrintSongs(Song[] songs) {
+            foreach (var song in songs) {
+                var minites = song.Length / 60;
+                var seconds = song.Length % 60;
+                Console.WriteLine($"{song.Title},{song.ArtistName},{minites}:{seconds}");
+            }
 
         }
     }
