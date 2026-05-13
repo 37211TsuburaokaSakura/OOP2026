@@ -19,9 +19,9 @@ namespace Exercize01 {
 
 
         //コンストラクタ
-        public Song(string title, string artist, int length) {
+        public Song(string title, string artistname, int length) {
             Title = title;
-            ArtistName = artist;
+            ArtistName = artistname;
             Length = length;
         }
 
