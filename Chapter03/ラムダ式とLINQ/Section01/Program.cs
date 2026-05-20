@@ -1,31 +1,44 @@
 ﻿namespace Section01 {
     internal class Program {
 
-      
+
         static void Main(string[] args) {
-            var numbers = new[] { 5, 3, 9, 6, 7, 5, 8, 1, 0, 5, 10, 4 };
+
+            var cities = new List<string> {
+                "Tokyo",
+                "New Delhi",
+                "Bangkok",
+                "London",
+                "Paris",
+                "Berlin",
+                "Canberra",
+                "Hong Kong",
+            };
 
 
-            // Judgement judge = IsEven;
+           var exists = cities.Exists(s => 6 <= s.Length && s.Contains('o') && s.EndsWith('n'));
+            Console.WriteLine(exists);
 
 
-            // var count = Count(numbers, n => n % 2 ==0 );
-            var count = Count(numbers, n => n % 4 == 0 || n%5 ==0);
-            Console.WriteLine(count);
+            /*
+                       var name = cities.Find(s => s.Length == 6);
+                       Console.WriteLine(name);
 
-            
 
+                       int index = cities.FindIndex(s => s == "Berlin");
+                       Console.WriteLine(index);
+
+
+                       var names = cities.FindAll(s => s.Length <= 5);
+                       foreach (var s in names) {
+                           Console.WriteLine(s);
+                       }
+
+                       */
         }
-        static int Count(int[] numbers, Predicate<int> judge) {
-
-            var count = 0;
-            foreach (var n in numbers) {
-                if (judge(n) == true) {
-                    count++;
-                }
-            }
-            return count;
-
-        }
+        //文字数が6字以上
+        //0を含む
+        //最後がｎ
     }
+
 }
