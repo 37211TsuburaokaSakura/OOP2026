@@ -45,7 +45,12 @@ namespace Exercise01 {
         }
 
         private static void Exercise4(List<int> numbers) {
-
+            Console.WriteLine("----3.1.4----");
+            var query = numbers.Select(s => s*2).ToList();
+            foreach (var n in query) {
+                Console.WriteLine(n);
+                
+            }
         }
     }
 }
