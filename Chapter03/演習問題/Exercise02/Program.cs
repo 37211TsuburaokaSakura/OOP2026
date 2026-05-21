@@ -39,7 +39,11 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_3(List<string> cities) {
-	        //できたらGitのコメント「問題3.2.3完成」
+            //できたらGitのコメント「問題3.2.3完成」
+            var number = cities.Where(s => s.Contains('o'));
+            foreach (var item in number) {
+                Console.WriteLine(item);
+            }
 	        
         }
 
