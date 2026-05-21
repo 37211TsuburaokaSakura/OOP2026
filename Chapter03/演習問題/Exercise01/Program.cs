@@ -37,6 +37,10 @@ namespace Exercise01 {
         }
 
         private static void Exercise3(List<int> numbers) {
+            Console.WriteLine("----3.1.3----");
+            IEnumerable<int> query = numbers.Where(s => 50 <= s);
+            foreach(var item in query)
+            Console.WriteLine(item);
 
         }
 
