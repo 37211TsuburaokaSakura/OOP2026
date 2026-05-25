@@ -40,7 +40,7 @@ namespace Exercise02 {
 
         private static void Exercise2_3(List<string> cities) {
             //できたらGitのコメント「問題3.2.3完成」
-            var number = cities.Where(s => s.Contains('o'));
+            var number = cities.Where(s => s.Contains('o')).ToArray();
             foreach (var item in number) {
                 Console.WriteLine(item);
             }
@@ -48,8 +48,11 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_4(List<string> cities) {
-	        //できたらGitのコメント「問題3.2.4完成」
-	        
+            //できたらGitのコメント「問題3.2.4完成」
+            var number = cities.Where(s => s.StartsWith('B')).Select(s => s.Length);
+            foreach (var item in number) {
+                Console.WriteLine(item);
+            }
         }
     }
 }
