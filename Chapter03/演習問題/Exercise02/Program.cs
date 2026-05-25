@@ -49,9 +49,10 @@ namespace Exercise02 {
 
         private static void Exercise2_4(List<string> cities) {
             //できたらGitのコメント「問題3.2.4完成」
-            var number = cities.Where(s => s.StartsWith('B')).Select(s => s.Length);
+            var number = cities.Where(s => s.StartsWith('B')).Select(s => new { s,s.Length});
+            
             foreach (var item in number) {
-                Console.WriteLine(item);
+                Console.WriteLine(item.s+";"+item.Length+"文字");
             }
         }
     }
