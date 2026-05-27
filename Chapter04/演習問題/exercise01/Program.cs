@@ -1,7 +1,4 @@
-﻿
-
-
-namespace Exercise01 {
+﻿namespace Exercise01 {
     internal class Program {
         static void Main(string[] args) {
             List<string> langs = [
@@ -21,7 +18,7 @@ namespace Exercise01 {
 
             //foreach文
             Console.WriteLine("foreach文で出力");
-            var cought = langs.Where(s => s.Contains('S') ).ToArray();
+            var cought = langs.Where(s => s.Contains('S')).ToArray();
             foreach (var language in cought) {
                 Console.WriteLine(language);
 
@@ -41,13 +38,13 @@ namespace Exercise01 {
 
 
 
-            //while文 a
+            //while文 
             Console.WriteLine("\nwhile文で出力");
-            var get = langs.Where(s => s.Contains('S')).ToArray();
-            int j = 0;
-            while (j < ca.Length) {
-                j++;
-                Console.WriteLine(get);
+            int count = 0;
+            while (count < langs.Count) {
+                if (langs[count].Contains('S'))
+                    Console.WriteLine(langs[count]);
+                count++;
 
             }
 
@@ -57,12 +54,17 @@ namespace Exercise01 {
         private static void Exercise2(List<string> langs) {
             Console.WriteLine("\n --- 4.1.2 ---");
             //LINQを使用する（Where）
-
+            var selected = langs.Where(s => s.Contains('S'));
+            foreach (var lang in selected) {
+                Console.WriteLine(lang);
+            }
 
         }
 
         private static void Exercise3(List<string> langs) {
             Console.WriteLine("\n --- 4.1.3 ---");
+            var name = langs.Find(s => s.Length==10) ?? "unknown";
+            Console.WriteLine(name);
 
         }
     }
