@@ -41,7 +41,7 @@ namespace Exercise01 {
 
 
 
-            //while文
+            //while文 a
             Console.WriteLine("\nwhile文で出力");
             var get = langs.Where(s => s.Contains('S')).ToArray();
             int j = 0;
