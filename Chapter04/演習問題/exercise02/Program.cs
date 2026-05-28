@@ -23,6 +23,8 @@
                     Console.WriteLine(num);
 
                 }
+            } else {
+                Console.WriteLine("入力値に謝りがあります");
             }
         }
 
