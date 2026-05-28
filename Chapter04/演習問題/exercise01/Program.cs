@@ -24,19 +24,12 @@
 
             }
 
-
-
-
             //for文
             Console.WriteLine("\nfor文で出力");
             var ca = langs.Where(s => s.Contains('S')).ToArray();
             for (int i = 0; i < ca.Length; i++) {
                 Console.WriteLine(ca[i]);
             }
-
-
-
-
 
             //while文 
             Console.WriteLine("\nwhile文で出力");

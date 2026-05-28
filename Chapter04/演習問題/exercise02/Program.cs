@@ -1,0 +1,37 @@
+﻿namespace exercise02 {
+    internal class Program {
+        static void Main(string[] args) {
+            Console.WriteLine("\n ---4.2.1---");
+            Exercise1();
+            Console.WriteLine("\n ---4.2.2---");
+            Exercise2();
+            Console.WriteLine("\n ---4.2.3---");
+            Exercise3();
+        }
+
+        //p80~90を参考にする
+        private static void Exercise1() {
+            var line = Console.ReadLine();
+            if (int.TryParse(line, out var num)) {
+                if (num <= 0) {
+                    Console.WriteLine(num);
+                } else if (num < 100) {
+                    Console.WriteLine((num * 2));
+                } else if (num >= 100) {
+                    Console.WriteLine(num * 3);
+                } else {
+                    Console.WriteLine(num);
+
+                }
+            }
+        }
+
+        private static void Exercise2() {
+            var num = Console.ReadLine;
+        }
+
+        private static void Exercise3() {
+            var num = Console.ReadLine;
+        }
+    }
+}
