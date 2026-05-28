@@ -51,7 +51,18 @@
         }
 
         private static void Exercise3() {
-            var num = Console.ReadLine;
+            var line = Console.ReadLine();
+            if (int.TryParse(line, out var num)) {
+                var outNum = num switch {
+                    < 0 => num,
+                    < 100 => num * 2,
+                    < 500 => num * 3,
+                    _ => num
+                };
+                Console.WriteLine(outNum);
+            } else {
+                Console.WriteLine("入力に謝りがあります");
+            }
         }
     }
 }
