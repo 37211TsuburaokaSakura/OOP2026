@@ -27,7 +27,25 @@
         }
 
         private static void Exercise2() {
-            var num = Console.ReadLine;
+            var line = Console.ReadLine();
+            if (int.TryParse(line, out var num)) {
+                switch (num) {
+                    case < 0:
+                        Console.WriteLine(num);
+                        break;
+                    case < 100:
+                        Console.WriteLine((num * 2));
+                        break;
+                    case < 500:
+                        Console.WriteLine(num * 3);
+                        break;
+                    default:
+                        Console.WriteLine(num);
+                        break;
+                }
+            } else {
+                Console.WriteLine("入力値に謝りがあります");
+            }
         }
 
         private static void Exercise3() {
