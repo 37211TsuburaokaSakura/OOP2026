@@ -21,6 +21,16 @@ namespace Exercise01 {
 
 
         //5.1.3
-  
+        public YearMonth AddoOneMonth(int year,int month) {
+            if (Month == 12) {
+                var GetYear = new YearMonth(year,month-11);
+             
+                return GetYear;
+                
+            } else {
+                var GetYears = new YearMonth(year, month + 1);
+                return GetYears; 
+            }
+        }
     }
 }
