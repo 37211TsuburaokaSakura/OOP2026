@@ -15,10 +15,6 @@ namespace Exercise02 {
             Console.WriteLine("5.2.2");
             Exercise2(ymCollection);
             
-            for (int i = 0; i <ymCollection.Length;i++){
-                Console.WriteLine(ymCollection[i]);
-               
-            }
 
             Console.WriteLine("5.2.4");
             Exercise4(ymCollection);
@@ -29,7 +25,11 @@ namespace Exercise02 {
         }
 
         private static void Exercise2(YearMonth[] ymCollection) {
-            
+
+            for (int i = 0; i < ymCollection.Length; i++) {
+                Console.WriteLine(ymCollection[i]);
+
+            }
         }
 
         private static void Exercise4(YearMonth[] ymCollection) {
