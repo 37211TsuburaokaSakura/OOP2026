@@ -14,6 +14,11 @@ namespace Exercise02 {
 
             Console.WriteLine("5.2.2");
             Exercise2(ymCollection);
+            
+            for (int i = 0; i <ymCollection.Length;i++){
+                Console.WriteLine(ymCollection[i]);
+               
+            }
 
             Console.WriteLine("5.2.4");
             Exercise4(ymCollection);
