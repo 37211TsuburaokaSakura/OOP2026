@@ -32,5 +32,8 @@ namespace Exercise01 {
                 return GetYears; 
             }
         }
+
+        //5.1.4
+        public override string ToString() => Year+"年"+Month+"月";
     }
 }
