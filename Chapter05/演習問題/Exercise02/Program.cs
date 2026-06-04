@@ -44,6 +44,15 @@ namespace Exercise02 {
 
 
         private static void Exercise4(YearMonth[] ymCollection) {
+            var findCent = FindFirst21C(ymCollection);
+            if (findCent is null) {
+                Console.WriteLine("21世紀のデータはありません");
+            } else {
+                Console.WriteLine(findCent);
+            }
+
+
+          //  var findc = FindFirst21C ?? 
         }
 
         private static void Exercise5(YearMonth[] ymCollection) {
