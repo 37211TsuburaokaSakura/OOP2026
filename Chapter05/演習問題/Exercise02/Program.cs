@@ -36,7 +36,7 @@ namespace Exercise02 {
             foreach (var item in ymCollection) {
                 if (item.Is21Century) {
                     return item;
-                        }
+                }
 
             }
             return null;
@@ -52,10 +52,13 @@ namespace Exercise02 {
             }
 
 
-          //  var findc = FindFirst21C ?? 
+            Console.WriteLine(FindFirst21C(ymCollection));
         }
 
         private static void Exercise5(YearMonth[] ymCollection) {
+            var array = ymCollection.Select(ym => ym.AddoOneMonth()).ToArray();
+            Exercise2(array);
+            
 
         }
     }
