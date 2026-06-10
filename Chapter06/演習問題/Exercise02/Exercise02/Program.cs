@@ -7,8 +7,8 @@ namespace Exercise02 {
             var read = Console.ReadLine();
 
             if (int.TryParse(read, out var result)) {
-                int num = result;
-                var s1 = num.ToString("#,0");
+
+                var s1 = $"{result:#,0}";
                 Console.WriteLine(s1);
 
             } else {
