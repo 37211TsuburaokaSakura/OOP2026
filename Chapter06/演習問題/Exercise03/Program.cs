@@ -61,7 +61,7 @@ namespace Exercise03 {
         //アルファベットの数をカウントして表示する
         private static void Exercise6(string text) {
 
-            var str = text.ToLower().Replace(" ", " ");
+            var str = text.ToLower().Replace(" ", "");
 
             //辞書を使った集計
             var alphaDicCount = Enumerable.Range('a', 26).ToDictionary(num => ((char)num), num => 0);
@@ -70,14 +70,31 @@ namespace Exercise03 {
 
                     alphaDicCount[c]++;
            }
+
+            
             foreach (var word in alphaDicCount) {
                 Console.WriteLine(word.Key + "：" + word.Value);
 
             }
+
+            Console.WriteLine();
+
             //配列を用いた集計
+            var array = Enumerable.Repeat(0, 26).ToArray();
+            foreach (var alph in str) {
+                array[alph - 'a']++;
+            }
+            for (char ch = 'a'; ch <= 'z'; ch++) {
+                Console.WriteLine($"{ ch}:{ array[ch - 'a']}");
+
+            }
+
+            Console.WriteLine();
 
             //'a'から順にカウントして集計
-
+            for (char ch = 'a'; ch <= 'z'; ch++) {
+                Console.WriteLine($"{ch}:{str.Count(c=>c ==ch)}");
+            }
 
         }
     }
