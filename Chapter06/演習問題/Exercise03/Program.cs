@@ -61,6 +61,12 @@ namespace Exercise03 {
         //アルファベットの数をカウントして表示する
         private static void Exercise6(string text) {
 
+
+            //辞書を使った集計
+            //配列を用いた集計
+            //'a'から順にカウントして集計
+
+           
         }
     }
 }
