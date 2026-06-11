@@ -46,13 +46,15 @@ namespace Exercise03 {
         }
 
         private static void Exercise4(string text) {
-            string[] works = text.Split(' ');
+            var count = text.Split(' ').Length;
             
-                Console.WriteLine(works.Length);
+                Console.WriteLine($"単語数：{count}");
       
 
         }
         private static void Exercise5(string text) {
+             text.Split(' ').Where(s => s.Length <= 4).ToList().ForEach(Console.WriteLine);
+            
 
         }
 
