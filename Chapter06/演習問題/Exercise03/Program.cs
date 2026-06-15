@@ -45,15 +45,24 @@ namespace Exercise03 {
 
         private static void Exercise3(string text) {
             //空白で区切ってnewwordに格納
-            string[] newWord = text.Split(' ');
+            var newWord = text.Split(' ');
 
             //連結
-            var newText = new StringBuilder();
-            foreach (var word in newWord) {
+            var newText = new StringBuilder(newWord[0]);
+
+            /*newText.Append(newWord[0]);
+            for (int i = 1; i < newWord.Length; i++) {
+                newText.Append(' ');
+                newText.Append(newWord[i]);
+
+            }*/
+               foreach (var word in newWord.Skip(1)) {
+                newText.Append(' ');
                 newText.Append(word);
-            }
-            var result = string.Join(" ", newWord);
-            Console.WriteLine(result+",");
+                }
+           
+              
+            Console.WriteLine(newText+",");
            
 
 
