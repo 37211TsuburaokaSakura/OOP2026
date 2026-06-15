@@ -1,4 +1,6 @@
 ﻿
+using System.Text;
+
 namespace Exercise03 {
     internal class Program {
         static void Main(string[] args) {
@@ -42,8 +44,21 @@ namespace Exercise03 {
         }
 
         private static void Exercise3(string text) {
-            //やらなくてよい
+            //空白で区切ってnewwordに格納
+            string[] newWord = text.Split(' ');
+
+            //連結
+            var newText = new StringBuilder();
+            foreach (var word in newWord) {
+                newText.Append(word);
+            }
+            var result = string.Join(" ", newWord);
+            Console.WriteLine(result+",");
+           
+
+
         }
+
 
         private static void Exercise4(string text) {
             var count = text.Split(' ').Length;
@@ -68,10 +83,10 @@ namespace Exercise03 {
             // var dict = new SortedDictionary<char, int>();
             foreach (var c in str) {
 
-                    alphaDicCount[c]++;
-           }
+                alphaDicCount[c]++;
+            }
 
-            
+
             foreach (var word in alphaDicCount) {
                 Console.WriteLine(word.Key + "：" + word.Value);
 
@@ -85,7 +100,7 @@ namespace Exercise03 {
                 array[alph - 'a']++;
             }
             for (char ch = 'a'; ch <= 'z'; ch++) {
-                Console.WriteLine($"{ ch}:{ array[ch - 'a']}");
+                Console.WriteLine($"{ch}:{array[ch - 'a']}");
 
             }
 
@@ -93,7 +108,7 @@ namespace Exercise03 {
 
             //'a'から順にカウントして集計
             for (char ch = 'a'; ch <= 'z'; ch++) {
-                Console.WriteLine($"{ch}:{str.Count(c=>c ==ch)}");
+                Console.WriteLine($"{ch}:{str.Count(c => c == ch)}");
             }
 
         }
