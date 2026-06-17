@@ -4,15 +4,11 @@ namespace Exercise04 {
     internal class Program {
         static void Main(string[] args) {
             var line = "Novelist=谷崎潤一郎;BestWork=春琴抄;Born=1886";
-            var ans = line.Split(';');
-            foreach (var item in ans) {
+
+            foreach (var item in line.Split(';')) {
                 var ans2 = item.Split('=');
-                Console.WriteLine($"{ToJapanese(ans2[0])}:{ans2[1]}" );
+                Console.WriteLine($"{ToJapanese(ans2[0])}:{ans2[1]}");
             }
-
-            
-
-
 
         }
         static string ToJapanese(string key) {
