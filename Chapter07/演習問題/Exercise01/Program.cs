@@ -38,7 +38,11 @@ namespace Exercise01 {
         }
 
         private static void Exercise3(int[] numbers) {
-            
+            //p173 参照
+            var change = numbers.Select(x => x.ToString("000")).ToArray();
+            foreach (var item in change) {
+                Console.WriteLine(item);
+            }
         }
 
         private static void Exercise4(int[] numbers) {
