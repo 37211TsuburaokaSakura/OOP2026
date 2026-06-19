@@ -53,6 +53,9 @@ namespace Exercise01 {
         }
 
         private static void Exercise5(int[] numbers) {
+            var deletenum = numbers.Distinct().Count(x => x > 10);
+            
+                Console.WriteLine(deletenum);
             
         }
     }
