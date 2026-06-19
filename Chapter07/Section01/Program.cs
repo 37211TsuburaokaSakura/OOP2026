@@ -20,8 +20,13 @@
 
 
             //250ページ以上の本を上位3冊
+            /*
+             var date = books.Where(x => 250 <= x.Pages).take(3);
+            foreach(var book in date){
+            Console.WriteLine(book.title);
+            }
+             */
             Console.WriteLine("---250ページの本　上から3冊---");
-            int i = 0;
             foreach (var item in books.Where(x => x.Pages > 250).Take(3)) {
                 
                 Console.WriteLine(item.Title);
