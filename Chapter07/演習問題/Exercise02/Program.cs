@@ -66,7 +66,10 @@ namespace Exercise02 {
         }
 
         private static void Exercise6(List<Book> books) {
-            
+            var upPrice = books.Where(b => b.Pages >= 400).OrderByDescending(b => b.Price);
+            foreach (var item in upPrice) {
+                Console.WriteLine("{0} {1}", item.Title, item.Price);
+            }
         }
 
         private static void Exercise7(List<Book> books) {
