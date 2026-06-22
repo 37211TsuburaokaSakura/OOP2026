@@ -31,23 +31,23 @@ namespace Exercise01 {
 
         private static void Exercise2(int[] numbers) {
            
-            var lustnums = numbers.TakeLast(2); ;
-            foreach (var item in lustnums) {
+            
+            foreach (var item in numbers.TakeLast(2)) {
                 Console.WriteLine(item);
             }
         }
 
         private static void Exercise3(int[] numbers) {
             //p173 参照
-            var change = numbers.Select(x => x.ToString("000")).ToArray();
+            var change = numbers.Select(x => x.ToString("000"));
             foreach (var item in change) {
                 Console.WriteLine(item);
             }
         }
 
         private static void Exercise4(int[] numbers) {
-            var uppernum = numbers.Order().Take(3);
-            foreach (var item in uppernum) {
+            
+            foreach (var item in numbers.Order().Take(3)) {
                 Console.WriteLine(item);
             }
         }
