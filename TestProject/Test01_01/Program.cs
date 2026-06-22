@@ -9,7 +9,7 @@
             foreach (var obj in TotalBySubject) {
                 Console.WriteLine("{0} {1}", obj.Key, obj.Value);
             }
-
+            
             //実行結果
             //英語 520
             //数学 550
