@@ -54,7 +54,10 @@ namespace Exercise02 {
         }
 
         private static void Exercise4(List<Book> books) {
-            
+            var farst = books.FirstOrDefault(b => b.Price >= 4000);
+            if (farst is not null) {
+                Console.WriteLine(farst.Title);
+            }
         }
 
         private static void Exercise5(List<Book> books) {
