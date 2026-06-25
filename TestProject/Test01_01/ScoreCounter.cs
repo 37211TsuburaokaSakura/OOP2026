@@ -11,13 +11,16 @@
         private static IEnumerable<Student> ReadScore(string filePath) {
             var sales = new List<Student>();
             var lines = File.ReadAllLines(filePath);
-           
-            
+            foreach (var line in lines) {
+                var items = line.Split(','); //カンマ区切りで分割
+                var sale = new Student {
+                    Name = items[0],
+                    Subject = items[1],
+                    Score = int.Parse(items[2]),
 
-
-
-
-
+                };
+                sales.Add(sale);
+            }
 
 
             return sales;
@@ -27,11 +30,16 @@
         public IDictionary<string, int> GetPerStudentScore() {
             var dict = new Dictionary<string, int>();
 
+            foreach (var sale in _score) {
+                //すでに店舗名が辞書のキーに登録されているか？
+                if (dict.ContainsKey(sale.Subject))
 
-
-
-
-
+                    //登録されている場合
+                    dict[sale.Subject] += sale.Score;　//売り上げを足しこみ
+                else
+                    //未登録の場合
+                    dict[sale.Subject] = sale.Score;　//新規に売り上げを登録
+            }
             return dict;
         }
     }

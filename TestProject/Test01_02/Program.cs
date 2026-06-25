@@ -60,17 +60,16 @@
 
         //問題１　合計値を表示（式形式で記述せよ）
         //　　　　出力結果【618】
-        private static void Exercise01(int[] numbers) {
-            var sumnum = numbers.Sum();
-            Console.WriteLine(sumnum);
-        }
+        private static void Exercise01(int[] numbers) =>
+           
+            Console.WriteLine(numbers.Sum());
+        
 
 
         //問題２　偶数の最大値を表示（式形式で記述せよ）
         //　　　　出力結果【94】
         private static void Exercise02(int[] numbers) {
-            var num = numbers.Where(n => n % 2 == 0).Max();
-            Console.WriteLine(num);
+            Console.WriteLine(numbers.Where(n => n % 2 == 0));
 
         }
 
@@ -151,7 +150,7 @@
         //          New Delhi : 9文字
         //          Hong Kong : 9文字】
         private static void Exercise09(List<string> cities) {
-
+            var citiesCount = cities.Select(c => new { })
 
 
         }
