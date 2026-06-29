@@ -135,7 +135,7 @@
         //　　　　  Canberra : 8文字
         //　　　　  Hong Kong : 9文字】
         private static void Exercise08(List<string> cities) {
-           // var cnt = cities.Count(x => x.)
+            var cnt = cities.Count(x => x.);
 
         }
 
@@ -150,7 +150,7 @@
         //          New Delhi : 9文字
         //          Hong Kong : 9文字】
         private static void Exercise09(List<string> cities) {
-            var citiesCount = cities.Select(c => new { })
+            var citiesCount = cities.Select(c => new { });
 
 
         }
