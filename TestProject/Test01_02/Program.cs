@@ -135,7 +135,10 @@
         //　　　　  Canberra : 8文字
         //　　　　  Hong Kong : 9文字】
         private static void Exercise08(List<string> cities) {
-            var cnt = cities.Count(x => x.);
+            var cnt = cities.Count();
+            foreach (var item in cnt) {
+                
+            }
 
         }
 

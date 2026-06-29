@@ -29,26 +29,25 @@ namespace Section01 {
 
                 //県庁所在地登録処理
                 prefOfficeDict[pref] = prefCaptalLocation;
-
             }
 
-            
 
-            while (true) {               
+            Boolean endFlag = false;
+            while (true) {
                 switch (menuDisp()) {
                     case 1:
                         //一覧表示
                         allDisp();
-
                         break;
+
                     case 2:
                         //検索
                         seachPrefCaptalLocation();
-
                         break;
-                    case 9:
-                        //終了
-                        return;
+
+                    default:
+                        endFlag = true;
+                        break;
                 }
             }
         }
@@ -70,6 +69,7 @@ namespace Section01 {
             }
         }
 
+        //メニュー
         private static int menuDisp() {
             Console.Write("\n");
             Console.WriteLine("****メニュー****");
