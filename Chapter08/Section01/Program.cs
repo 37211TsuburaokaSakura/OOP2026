@@ -1,4 +1,6 @@
 ﻿
+
+
 namespace Section01 {
     internal class Program {
         private static Dictionary<string, string> prefOfficeDict = new Dictionary<string, string>();
@@ -19,45 +21,65 @@ namespace Section01 {
                 Console.Write("県庁所在地：");
                 prefCaptalLocation = Console.ReadLine();
 
+                //上書き
+                if (prefOfficeDict.ContainsKey(pref)) {
+                    Console.WriteLine("上書きしますかＹ/Ｎ");
+                    if (Console.ReadLine() == "N") continue;
+                }
+
                 //県庁所在地登録処理
                 prefOfficeDict[pref] = prefCaptalLocation;
+
             }
 
+            
 
-
-            while (true) {
+            while (true) {               
                 switch (menuDisp()) {
                     case 1:
-                        foreach (var item in prefOfficeDict) {
-                            Console.WriteLine($"{item.Key}の県庁所在地は{item.Value}です");
-                        }
+                        //一覧表示
+                        allDisp();
+
                         break;
                     case 2:
-                        Console.Write("都道府県:");
-                        var key = Console.ReadLine();
-                        if (prefOfficeDict.ContainsKey(key)) {
-                            var search = prefOfficeDict[key];
-                            Console.WriteLine($"{key}の県庁所在地は{search}です");
-                        }
+                        //検索
+                        seachPrefCaptalLocation();
+
                         break;
                     case 9:
+                        //終了
                         return;
-                        
-                        
                 }
-                
+            }
+        }
+
+        //case2
+        private static void seachPrefCaptalLocation() {
+            Console.Write("都道府県:");
+            var key = Console.ReadLine();
+            if (prefOfficeDict.ContainsKey(key)) {
+                var search = prefOfficeDict[key];
+                Console.WriteLine($"{key}の県庁所在地は{search}です");
+            }
+        }
+
+        //case1
+        private static void allDisp() {
+            foreach (var item in prefOfficeDict) {
+                Console.WriteLine($"{item.Key}の県庁所在地は{item.Value}です");
             }
         }
 
         private static int menuDisp() {
+            Console.Write("\n");
             Console.WriteLine("****メニュー****");
             Console.WriteLine("1:一覧表示");
             Console.WriteLine("2：検索");
             Console.WriteLine("9:終了");
             Console.Write(">");
-            var numnum = Console.ReadLine();
-            int numnum2 = int.Parse(numnum);
-            return numnum2;
+
+            int numnum = int.Parse(Console.ReadLine());
+            return numnum;
         }
     }
 }
