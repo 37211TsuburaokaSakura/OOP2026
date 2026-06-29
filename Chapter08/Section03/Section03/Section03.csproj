@@ -16,4 +16,10 @@
     </Compile>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Abbreviations.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
