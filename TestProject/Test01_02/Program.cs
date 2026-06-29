@@ -63,15 +63,14 @@
         private static void Exercise01(int[] numbers) =>
            
             Console.WriteLine(numbers.Sum());
-        
+
 
 
         //問題２　偶数の最大値を表示（式形式で記述せよ）
         //　　　　出力結果【94】
-        private static void Exercise02(int[] numbers) {
-            Console.WriteLine(numbers.Where(n => n % 2 == 0));
+        private static void Exercise02(int[] numbers) =>
+            Console.WriteLine(numbers.Where(n => n % 2 == 0).Max());
 
-        }
 
 
         //問題３　昇順に並べて表示（遅延実行とする）
@@ -118,10 +117,10 @@
         //          Paris
         //          Tokyo】
         private static void Exercise07(List<string> cities) {
-       /*     var upCities = cities.OrderBy(x => x);
-            foreach (string var in upCities) {
-                Console.WriteLine(upCities);
-            }*/
+           var upCities = cities.OrderBy(x => x);
+            foreach ( var item in upCities) {
+                Console.WriteLine(item);
+            }
         }
 
         //問題８　各都市の文字数
@@ -135,9 +134,8 @@
         //　　　　  Canberra : 8文字
         //　　　　  Hong Kong : 9文字】
         private static void Exercise08(List<string> cities) {
-            var cnt = cities.Count();
-            foreach (var item in cnt) {
-                
+            foreach (var item in cities) {
+                Console.WriteLine($"{item}:{item.Length}");
             }
 
         }
@@ -153,7 +151,9 @@
         //          New Delhi : 9文字
         //          Hong Kong : 9文字】
         private static void Exercise09(List<string> cities) {
-            var citiesCount = cities.Select(c => new { });
+            foreach (var item in cities.OrderBy(x => x.Length)) {
+                Console.WriteLine($"{item}:{item.Length}文字");
+            }
 
 
         }
@@ -163,7 +163,9 @@
         //        【London
         //          Berlin】
         private static void Exercise10(List<string> cities) {
-
+            foreach (var item in cities.Where(x => x.Length == 6)) {
+                Console.WriteLine($"{item}");
+            }
 
         }
     }
