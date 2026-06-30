@@ -166,7 +166,6 @@
             foreach (var item in cities.Where(x => x.Length == 6)) {
                 Console.WriteLine($"{item}");
             }
-
         }
     }
 }
