@@ -1,4 +1,6 @@
-﻿namespace Exercise02 {
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace Exercise02 {
     internal class Program {
         static void Main(string[] args) {
             var abbrs = new Abbreviations();
@@ -9,17 +11,13 @@
 
             // 8.2.3 (Countの呼び出し例)
             // 上のAddメソッドで、２つのオブジェクトを追加しているので、読み込んだ単語数+2が、Countの値になる。
-
-
-
-
-
+            Console.WriteLine($"追加後　件数：{abbrs.Count}");
 
             Console.WriteLine();    //改行
 
             // 8.2.3 (Removeの呼び出し例)
-
-
+            abbrs.Remove("NPT");
+            Console.WriteLine($"消去後　件数：{abbrs.Count}");
 
 
 
@@ -32,12 +30,10 @@
 
             // 8.2.4
             // 新たなGetAllメソッドを追加済みなので、使用してLINQで処理を行う
-
-
-
-
-
-
+           var num = abbrs.GetAll().Where(x => x.Key.Length == 3);
+            foreach (var item in num) {
+                Console.WriteLine($"{item.Key}={item.Value}");
+            }
         }
     }
 }
