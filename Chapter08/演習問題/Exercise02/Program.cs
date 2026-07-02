@@ -33,6 +33,7 @@ namespace Exercise02 {
            var num = abbrs.GetAll().Where(x => x.Key.Length == 3);
             foreach (var item in num) {
                 Console.WriteLine($"{item.Key}={item.Value}");
+                //Console.WriteLine("{0}={1}",item.Key,item.Value);
             }
         }
     }
