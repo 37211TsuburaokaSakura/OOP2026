@@ -19,6 +19,10 @@ namespace Section01 {
             var birthday = today.Year- birth.Year;
             var longago = today.Date - birth.Date;
 
+            //‰½—j“ú
+            var cul = new CultureInfo("ja-JP");
+            cul.DateTimeFormat.Calendar = new JapaneseCalendar();
+            var DayOfWeek = cul.DateTimeFormat.GetDayName(birth.DayOfWeek);
 
 
             if (today < birth.AddYears(birthday)) {
@@ -26,7 +30,7 @@ namespace Section01 {
             }
             tbOut.Text = $"‚ ‚È‚½‚Í{GetAge(birth, today)}Î";
             tbOut2.Text = $"Œo‰ß“ú”‚Í{longago.Days}‚Å‚·";
-            tbOut3.Text = $"¶‚Ü‚ê‚½{birth.Month}ŒŽ{birth.Day}“ú‚Í‘æ{NthWeek(birth)}T‚Å‚·";
+            tbOut3.Text = $"¶‚Ü‚ê‚½{birth.Month}ŒŽ{birth.Day}“ú‚Í‘æ{NthWeek(birth)}T‚Ì{DayOfWeek}‚Å‚·";
 
             //”N—î‚ð‹‚ß‚éƒƒ\ƒbƒh
             static int GetAge(DateTime birthday, DateTime targetDay) {
