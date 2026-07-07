@@ -1,3 +1,5 @@
+using System.Globalization;
+
 namespace Section01 {
     public partial class Form1 : Form {
         public Form1() {
@@ -5,39 +7,31 @@ namespace Section01 {
         }
 
         private void btGet_Click(object sender, EventArgs e) {
-            DateTime dt1 = dtpdate.Value;
+            DateTime date = dtpdate.Value;
+            tbOut.Text = date.AddDays((double)nudDay.Value).ToString();
 
-            if (DateTime.IsLeapYear(dt1.Year)) {
-                tbOut.Text = "Ç§ÇÈÇ§îNÇ≈Ç∑";
-            } else {
-                tbOut.Text = "Ç§ÇÈÇ§îNÇ≈ÇÕÇ†ÇËÇ‹ÇπÇÒ";
+        }
 
+        private void btBirthCalc_Click(object sender, EventArgs e) {
+            DateTime birth =dtpBirth.Value;  //ê∂Ç‹ÇÍÇΩì˙ït
+            DateTime today = DateTime.Today; //ç°ì˙ÇÃì˙ït
+
+            var birthday = today.Year- birth.Year;
+            var longago = today.Date - birth.Date;
+            if (today < birth.AddYears(birthday)) {
+                birthday--;
             }
+            tbOut.Text = $"Ç†Ç»ÇΩÇÕ{GetAge(birth, today)}çŒ";
+            tbOut2.Text = $"åoâﬂì˙êîÇÕ{longago.Days}Ç≈Ç∑";
 
-           /*    switch (dt1.DayOfWeek) {
-                    case DayOfWeek.Sunday:
-                        tbOut.Text = "ç°ì˙ÇÕì˙ójì˙";
-                        break;
-                    case DayOfWeek.Monday:
-                        tbOut.Text = "ç°ì˙ÇÕåéójì˙";
-                        break;
-                    case DayOfWeek.Tuesday:
-                        tbOut.Text = "ç°ì˙ÇÕâŒójì˙";
-                        break;
-                    case DayOfWeek.Wednesday:
-                        tbOut.Text = "ç°ì˙ÇÕêÖójì˙";
-                        break;
-                    case DayOfWeek.Thursday:
-                        tbOut.Text = "ç°ì˙ÇÕñÿójì˙";
-                        break;
-                    case DayOfWeek.Friday:
-                        tbOut.Text = "ç°ì˙ÇÕã‡ójì˙";
-                        break;
-                    case DayOfWeek.Saturday:
-                        tbOut.Text = "ç°ì˙ÇÕójì˙";
-                        break;
-                }*/
-
+            //îNóÓÇãÅÇﬂÇÈÉÅÉ\ÉbÉh
+            static int GetAge(DateTime birthday, DateTime targetDay) {
+                var age = targetDay.Year - birthday.Year;
+                if (targetDay < birthday.AddYears(age)) {
+                    age--;
+                }
+                return age;
+            }
         }
     }
 }
