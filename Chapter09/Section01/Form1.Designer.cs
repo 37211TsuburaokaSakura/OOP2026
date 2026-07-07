@@ -32,6 +32,7 @@
             btBirthCalc = new Button();
             label2 = new Label();
             tbOut2 = new TextBox();
+            tbOut3 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)nudDay).BeginInit();
             SuspendLayout();
             // 
@@ -116,15 +117,25 @@
             tbOut2.Size = new Size(398, 39);
             tbOut2.TabIndex = 2;
             // 
+            // tbOut3
+            // 
+            tbOut3.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            tbOut3.Location = new Point(12, 287);
+            tbOut3.Multiline = true;
+            tbOut3.Name = "tbOut3";
+            tbOut3.Size = new Size(398, 128);
+            tbOut3.TabIndex = 2;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(433, 333);
+            ClientSize = new Size(433, 440);
             Controls.Add(label2);
             Controls.Add(btBirthCalc);
             Controls.Add(label1);
             Controls.Add(nudDay);
+            Controls.Add(tbOut3);
             Controls.Add(tbOut2);
             Controls.Add(tbOut);
             Controls.Add(dtpGet);
@@ -148,5 +159,6 @@
         private Button btBirthCalc;
         private Label label2;
         private TextBox tbOut2;
+        private TextBox tbOut3;
     }
 }
