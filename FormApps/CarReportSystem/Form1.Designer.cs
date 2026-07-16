@@ -62,6 +62,7 @@
             statusStrip1 = new StatusStrip();
             tsslbMessage = new ToolStripStatusLabel();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
+            ofdPickFileOpen = new OpenFileDialog();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvRecords).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pdPicture).BeginInit();
@@ -123,7 +124,6 @@
             // 
             // rbOther
             // 
-            rbOther.AutoSize = true;
             rbOther.Font = new Font("Yu Gothic UI", 11.25F);
             rbOther.Location = new Point(340, 19);
             rbOther.Name = "rbOther";
@@ -238,6 +238,7 @@
             dgvRecords.Name = "dgvRecords";
             dgvRecords.Size = new Size(768, 292);
             dgvRecords.TabIndex = 4;
+            dgvRecords.Click += dgvRecords_Click;
             // 
             // tbReport
             // 
@@ -267,6 +268,7 @@
             btNewInput.TabIndex = 6;
             btNewInput.Text = "新規入力";
             btNewInput.UseVisualStyleBackColor = false;
+            btNewInput.Click += btNewInput_Click;
             // 
             // label7
             // 
@@ -288,6 +290,7 @@
             btPicOpen.TabIndex = 6;
             btPicOpen.Text = "開く...";
             btPicOpen.UseVisualStyleBackColor = false;
+            btPicOpen.Click += btPicOpen_Click;
             // 
             // btDeletePicture
             // 
@@ -340,6 +343,7 @@
             pdPicture.Location = new Point(550, 85);
             pdPicture.Name = "pdPicture";
             pdPicture.Size = new Size(328, 253);
+            pdPicture.SizeMode = PictureBoxSizeMode.StretchImage;
             pdPicture.TabIndex = 9;
             pdPicture.TabStop = false;
             // 
@@ -426,6 +430,10 @@
             toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             toolStripStatusLabel1.Size = new Size(0, 17);
             // 
+            // ofdPickFileOpen
+            // 
+            ofdPickFileOpen.FileName = "openFileDialog1";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -509,5 +517,6 @@
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel tsslbMessage;
         private ToolStripStatusLabel toolStripStatusLabel1;
+        private OpenFileDialog ofdPickFileOpen;
     }
 }
