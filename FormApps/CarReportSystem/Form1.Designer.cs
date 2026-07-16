@@ -173,7 +173,7 @@
             // 
             rbNissan.AutoSize = true;
             rbNissan.Font = new Font("Yu Gothic UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            rbNissan.Location = new Point(64, 19);
+            rbNissan.Location = new Point(74, 16);
             rbNissan.Name = "rbNissan";
             rbNissan.Size = new Size(57, 24);
             rbNissan.TabIndex = 0;
@@ -233,8 +233,10 @@
             // 
             // dgvRecords
             // 
+            dgvRecords.AllowUserToAddRows = false;
+            dgvRecords.AllowUserToDeleteRows = false;
             dgvRecords.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvRecords.Location = new Point(110, 431);
+            dgvRecords.Location = new Point(110, 426);
             dgvRecords.Name = "dgvRecords";
             dgvRecords.Size = new Size(768, 292);
             dgvRecords.TabIndex = 4;
