@@ -237,6 +237,7 @@
             dgvRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvRecords.Size = new Size(719, 292);
             dgvRecords.TabIndex = 4;
+            dgvRecords.SelectionChanged += dgvRecords_SelectionChanged;
             dgvRecords.Click += dgvRecords_Click;
             // 
             // tbReport
