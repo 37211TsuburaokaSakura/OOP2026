@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Windows.Forms;
 using static CarReportSystem.CarReport;
 
 namespace CarReportSystem {
@@ -80,18 +81,18 @@ namespace CarReportSystem {
         }
         private void dgvRecords_Click(object sender, EventArgs e) {
 
-     /*       if ((dgvRecords.CurrentRow is null)
-                || (!dgvRecords.CurrentRow.Selected)) return;
+            /*       if ((dgvRecords.CurrentRow is null)
+                       || (!dgvRecords.CurrentRow.Selected)) return;
 
-            dtpDate.Value = (DateTime)dgvRecords.CurrentRow.Cells["Date"].Value;
-            cbAuthor.Text = (string)dgvRecords.CurrentRow.Cells["Author"].Value;
-            SetRadioButtonMaker((MakerGroup)dgvRecords.CurrentRow.Cells["Meker"].Value);
-            cbCarName.Text = (string)dgvRecords.CurrentRow.Cells["CarName"].Value;
-            tbReport.Text = (string)dgvRecords.CurrentRow.Cells["Report"].Value;
-            pbPicture.Image = (Image)dgvRecords.CurrentRow.Cells["Picture"].Value;
+                   dtpDate.Value = (DateTime)dgvRecords.CurrentRow.Cells["Date"].Value;
+                   cbAuthor.Text = (string)dgvRecords.CurrentRow.Cells["Author"].Value;
+                   SetRadioButtonMaker((MakerGroup)dgvRecords.CurrentRow.Cells["Meker"].Value);
+                   cbCarName.Text = (string)dgvRecords.CurrentRow.Cells["CarName"].Value;
+                   tbReport.Text = (string)dgvRecords.CurrentRow.Cells["Report"].Value;
+                   pbPicture.Image = (Image)dgvRecords.CurrentRow.Cells["Picture"].Value;
 
-            ImputItemsUpdate(); //データグリッドビューを更新したら呼ぶメソッド
-     */
+                   ImputItemsUpdate(); //データグリッドビューを更新したら呼ぶメソッド
+            */
         }
 
         private void SetRadioButtonMaker(MakerGroup targetMaker) {
@@ -173,6 +174,19 @@ namespace CarReportSystem {
             pbPicture.Image = (Image)dgvRecords.CurrentRow.Cells["Picture"].Value;
 
             ImputItemsUpdate(); //データグリッドビューを更新したら呼ぶメソッド
+        }
+
+        private void 終了ToolStripMenuItem_Click(object sender, EventArgs e) {
+            Application.Exit();
+        }
+
+        private void 色設定ToolStripMenuItem_Click(object sender, EventArgs e) {
+
+            cdColor = new ColorDialog();
+            if (cdColor.ShowDialog() == DialogResult.OK) {
+                Color selectedColor = cdColor.Color;
+                BackColor = selectedColor;
+            }
         }
     }
 }
