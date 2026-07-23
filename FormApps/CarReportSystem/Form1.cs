@@ -1,13 +1,16 @@
 using System.ComponentModel;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Serialization;
 using static CarReportSystem.CarReport;
+
 
 namespace CarReportSystem {
     public partial class Form1 : Form {
 
         //カーレポート管理用リスト
         BindingList<CarReport> listCarReports = new BindingList<CarReport>();
-
+        Settings settings = new Settings();
         public Form1() {
             InitializeComponent();
             dgvRecords.DataSource = listCarReports;
@@ -177,7 +180,7 @@ namespace CarReportSystem {
         }
 
         private void dgvRecords_SelectionChanged(object sender, EventArgs e) {
-            if ((dgvRecords.CurrentRow.DataBoundItem   is not CarReport carReport)
+            if ((dgvRecords.CurrentRow.DataBoundItem is not CarReport carReport)
                || (!dgvRecords.CurrentRow.Selected)) return;
 
 
@@ -190,7 +193,6 @@ namespace CarReportSystem {
 
             InputItemsUpdate(); //データグリッドビューを更新したら呼ぶメソッド
         }
-
         private void 終了ToolStripMenuItem_Click(object sender, EventArgs e) {
             Application.Exit();
         }
@@ -208,6 +210,15 @@ namespace CarReportSystem {
 
                 //↑this.BackColor(thisは書かなくてよい)
             }
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
+            //設定ファイルへ色情報を保存
+
+            using (var write = XmlWriter.Create("settings.xml")) {
+                var serializer = new XmlSerializer(settings.GetType());
+                serializer.Serialize(write,settings);
+           }
         }
     }
 }
