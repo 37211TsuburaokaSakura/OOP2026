@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Diagnostics.Eventing.Reader;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
@@ -17,7 +18,24 @@ namespace CarReportSystem {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-
+            //設定ファイルを読み込み背景色を設定する（逆シリアル化）
+            //ｐ286以降
+           
+            if (File.Exists("setting.xml")) {
+                try {
+                    using (var reader = XmlReader.Create(("setting.xml"))) {
+                        var serializer = new XmlSerializer(typeof(Settings));
+                        var settings = serializer.Deserialize(reader) as Settings;
+                        BackColor = Color.FromArgb(settings.MainFormBackColor);
+                    }
+                }
+                catch (Exception ex) {
+                    tsslbMessage.Text = "設定ファイル読み込みエラー";
+                    MessageBox.Show(ex.Message);//より具体的なエラーを表示
+                }
+            } else {
+                tsslbMessage.Text = "設定ファイルがありません";
+            }
         }
 
         //追加ボタンイベントハンドラ
@@ -218,7 +236,7 @@ namespace CarReportSystem {
         private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
             //設定ファイルへ色情報を保存
 
-            using (var write = XmlWriter.Create("settings.xml")) {
+            using (var write = XmlWriter.Create("setting.xml")) {
                 var serializer = new XmlSerializer(settings.GetType());
                 serializer.Serialize(write,settings);
            }
