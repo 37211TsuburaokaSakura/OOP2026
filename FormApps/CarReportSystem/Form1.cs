@@ -208,6 +208,9 @@ namespace CarReportSystem {
                 Color selectedColor = cdColor.Color;
                 BackColor = selectedColor;
 
+                //•ÏX‚³‚ê‚½F‚Ìî•ñ‚ğ•Û‘¶
+                settings.MainFormBackColor = cdColor.Color.ToArgb();
+
                 //ªthis.BackColor(this‚Í‘‚©‚È‚­‚Ä‚æ‚¢)
             }
         }
