@@ -248,6 +248,9 @@ namespace CarReportSystem {
         private void 保存ToolStripMenuItem_Click(object sender, EventArgs e) {
             reportSaveFile();
         }
+        private void 開くToolStripMenuItem_Click(object sender, EventArgs e) {
+            reportOpenFile();
+        }
 
         //ファイルセーブ処理
         private void reportSaveFile() {
@@ -271,6 +274,24 @@ namespace CarReportSystem {
 
         }
         //ファイルオープン処理
-        private void reportOpenFile() { }
+        private void reportOpenFile() {
+            if (ofdReportFileOpen.ShowDialog() == DialogResult.OK) {
+                try {
+#pragma warning disable SYSLIB0011
+                    var bf = new BinaryFormatter();
+#pragma warning restore SYSLIB0011
+                    using (FileStream fs = File.Open(
+                        ofdReportFileOpen.FileName,//ファイル名
+                        FileMode.Open,//ファイルモード
+                        FileAccess.Read//アクセス
+                        )) {
+                        listCarReports = (BindingList<CarReport>)bf.Deserialize(fs);
+                        dgvRecords.DataSource = listCarReports;
+
+                    }
+                }
+                catch (Exception){ }
+                }
+        }
     }
 }
