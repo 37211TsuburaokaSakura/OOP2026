@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using System.Diagnostics.Eventing.Reader;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
@@ -12,6 +13,7 @@ namespace CarReportSystem {
         //カーレポート管理用リスト
         BindingList<CarReport> listCarReports = new BindingList<CarReport>();
         Settings settings = new Settings();
+
         public Form1() {
             InitializeComponent();
             dgvRecords.DataSource = listCarReports;
@@ -20,12 +22,12 @@ namespace CarReportSystem {
         private void Form1_Load(object sender, EventArgs e) {
             //設定ファイルを読み込み背景色を設定する（逆シリアル化）
             //ｐ286以降
-           
+
             if (File.Exists("setting.xml")) {
                 try {
                     using (var reader = XmlReader.Create(("setting.xml"))) {
                         var serializer = new XmlSerializer(typeof(Settings));
-                        var settings = serializer.Deserialize(reader) as Settings;
+                        settings = serializer.Deserialize(reader) as Settings;
                         BackColor = Color.FromArgb(settings.MainFormBackColor);
                     }
                 }
@@ -238,8 +240,31 @@ namespace CarReportSystem {
 
             using (var write = XmlWriter.Create("setting.xml")) {
                 var serializer = new XmlSerializer(settings.GetType());
-                serializer.Serialize(write,settings);
-           }
+                serializer.Serialize(write, settings);
+            }
         }
+
+        
+        private void 保存ToolStripMenuItem_Click(object sender, EventArgs e) {
+            reportSaveFile();
+        }
+
+        //ファイルセーブ処理
+        private void reportSaveFile() {
+            if (sfdReportFileSave.ShowDialog() == DialogResult.OK) {
+                try {
+#pragma warning disable SYSLIB0011
+                    var bf = new BinaryFormatter();
+#pragma warning restore SYSLIB0011
+                }
+                catch (Exception ex) {
+                    tsslbMessage.Text = "ファイル書き出しエラー";
+                    MessageBox.Show(ex.Message);
+                }
+            }
+
+        }
+        //ファイルオープン処理
+        private void reportOpenFile() { }
     }
 }
