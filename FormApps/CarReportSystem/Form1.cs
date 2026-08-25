@@ -10,7 +10,9 @@ namespace CarReportSystem {
 
         //カーレポート管理用リスト
         BindingList<CarReport> listCarReports = new BindingList<CarReport>();
-        Settings settings = new Settings();
+        //Settings settings = new Settings();
+
+        //Settings settings = Settings.Instance;
 
         public Form1() {
             InitializeComponent();
@@ -31,7 +33,7 @@ namespace CarReportSystem {
                             settings = loadedSettings;
 
                             //背景色
-                            BackColor = Color.FromArgb(settings.MainFormBackColor);
+                            BackColor = Color.FromArgb(Settings.Instance.MainFormBackColor);
                         }
                     }
                 }
@@ -247,7 +249,7 @@ namespace CarReportSystem {
                 BackColor = selectedColor;
 
                 //変更された色の情報を保存
-                settings.MainFormBackColor = cdColor.Color.ToArgb();
+                Settings.Instance.MainFormBackColor = cdColor.Color.ToArgb();
 
                 //↑this.BackColor(thisは書かなくてよい)
             }
@@ -257,8 +259,8 @@ namespace CarReportSystem {
             //設定ファイルへ色情報を保存
 
             using (var write = XmlWriter.Create("setting.xml")) {
-                var serializer = new XmlSerializer(settings.GetType());
-                serializer.Serialize(write, settings);
+                var serializer = new XmlSerializer(Settings.Instance.GetType());
+                serializer.Serialize(write, Settings.Instance);
             }
         }
 
