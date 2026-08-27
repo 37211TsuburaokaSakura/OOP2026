@@ -20,32 +20,33 @@ namespace CarReportSystem {
         //外部からnewさせないようにする
         private Settings() { }
 
-        //ロード
+        //設定ファイルからロード
         public void Load() {
-            if (File.Exists(FileName))
+            if (!File.Exists(FileName))
                 return;
-            using var reader = XmlReader.Create(("setting.xml"));
-            var serializer = new XmlSerializer(typeof(SettingsDate));
 
-            if (serializer.Deserialize(reader) is Settings date) {
-                MainFormBackColor = date.MainFormBackColor;
+            using var reader = XmlReader.Create(("setting.xml"));
+            var serializer = new XmlSerializer(typeof(SettingsData));
+
+            if (serializer.Deserialize(reader) is  SettingsData data) {
+                MainFormBackColor = data.MainFormBackColor;
 
             }
         }
 
-        //セーブ
+        //設定ファイルのセーブ
         public void Save() {
-            var date = new SettingsDate {
-                MainForBackColor = MainFormBackColor
+            var data = new SettingsData {
+                MainFormBackColor = MainFormBackColor
             };
             using var writer = XmlWriter.Create(FileName);
-            var serializer = new XmlSerializer(typeof(SettingsDate));
-            serializer.Serialize(writer, date);
+            var serializer = new XmlSerializer(typeof(SettingsData));
+            serializer.Serialize(writer, data);
 
         }
         //xml保存用のクラス
-        public class SettingsDate {
-            public int MainForBackColor { get; set; }
+        public class SettingsData {
+            public int MainFormBackColor { get; set; }
         }
     }
 }
