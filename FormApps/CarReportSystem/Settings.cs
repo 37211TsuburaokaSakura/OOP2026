@@ -8,7 +8,7 @@ namespace CarReportSystem {
         //唯一のSettingオブぜくと
         private static readonly Settings _instance = new Settings();
 
-        //メイン画面に設定した色情報
+        //メイン画面に設定した色情報する
         public int MainFormBackColor { get; set; }
         = SystemColors.Control.ToArgb();
 
