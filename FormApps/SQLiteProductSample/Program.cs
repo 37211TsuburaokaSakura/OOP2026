@@ -9,8 +9,12 @@ internal static class Program
 
         try
         {
-       
+            //sqlliteデータベースを初期化する
+            //product.dbが存在しない場合は作成され
+            //
+            Database.Initialize();
             Application.Run(new Form1());
+       
         }
         catch (Exception ex)
         {

@@ -9,7 +9,7 @@ public static class Database {
     private static readonly string DatabasePath = Path.Combine(AppContext.BaseDirectory, "products.db");
 
     //sqlloiteへ接続するための接続文字列
-    private static readonly string ConnectionString = $"Date source = {DatabasePath}";
+    private static readonly string ConnectionString = $"Data Source={DatabasePath}";
 
     //DBファイルの保存場所を外部から確認するための読み取り専用プロパティ
     public static string FilePath => DatabasePath;
@@ -30,6 +30,7 @@ public static class Database {
         connection.Open();
 
         //sqlを実行するためのコマンドプロジェクトを作る
+
         using var command = connection.CreateCommand();
 
 
@@ -39,9 +40,8 @@ public static class Database {
             """
              CREATE TABLE IF NOT EXISTS Products(
                 Id     INTEGER PRIMARY KEY AUTOINCREMENT,
-                Name   TEXT NOT NULL
-                Price  INTEGER NOT NULL CHACK(Price >=0)
-             
+                Name   TEXT NOT NULL,
+                Price  INTEGER NOT NULL CHECK (Price >= 0)
              );
             """;
 
