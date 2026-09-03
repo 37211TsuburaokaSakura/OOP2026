@@ -48,7 +48,6 @@ public class ProductRepository {
     public int Add(string name, int price) {
         //接続オブジェクトを生成する
         using var connection = Database.GetConnection();
-
         connection.Open();
 
         //sqlを実行するためのコマンドプロジェクトを作る
