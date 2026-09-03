@@ -35,7 +35,7 @@ namespace CarReportSystem {
         }
 
         //設定ファイルのセーブ
-        public void Save() {
+        public void Save() { 
             var data = new SettingsData {
                 MainFormBackColor = MainFormBackColor
             };
