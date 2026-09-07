@@ -24,7 +24,7 @@ namespace CarReportSystem {
             //ｐ286以降
 
             try {
-                Settings.Instance.Load();             
+                Settings.Instance.Load();
                 BackColor = Color.FromArgb(Settings.Instance.MainFormBackColor);
             }
             catch (Exception ex) {
@@ -246,11 +246,11 @@ namespace CarReportSystem {
             //設定ファイルへ色情報を保存
 
             //using (var write = XmlWriter.Create("setting.xml")) {
-                //var serializer = new XmlSerializer(Settings.Instance.GetType());
-                //serializer.Serialize(write, Settings.Instance);
-                Settings.Instance.Save();
+            //var serializer = new XmlSerializer(Settings.Instance.GetType());
+            //serializer.Serialize(write, Settings.Instance);
+            Settings.Instance.Save();
 
-           //}
+            //}
         }
 
 
@@ -312,6 +312,10 @@ namespace CarReportSystem {
                     MessageBox.Show(ex.Message);
                 }
             }
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
+
         }
     }
 }
