@@ -213,7 +213,7 @@ namespace CarReportSystem {
 
             dtpDate.Value = carReport.Date;
             cbAuthor.Text = carReport.Author;
-            SetRadioButtonMaker(carReport.Maker);
+            SetRadioButtonMaker((MakerGroup)carReport.Maker);
             cbCarName.Text = carReport.CarName;
             tbReport.Text = carReport.Report;
             pbPicture.Image = carReport.Picture;
