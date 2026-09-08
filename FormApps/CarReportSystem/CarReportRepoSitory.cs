@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Drawing.Imaging;
 using System.Globalization;
@@ -13,6 +14,7 @@ using static CarReportSystem.CarReport;
 namespace CarReportSystem {
     public class CarReportRepoSitory {
         public List<CarReport> GetAll() {
+           
 
             var products = new List<CarReport>();
 
@@ -61,10 +63,10 @@ namespace CarReportSystem {
                 });
 
             }
-            return products;
+           return products;
         }
 
-        public void Add(DateTime date, string author, MakerGroup maker, string carName, string report,Image? Picture) {
+        public int Add(DateTime date, string author, MakerGroup maker, string carName, string report,Image? Picture) {
 
             //接続オブジェクトを生成する
             using var connection = Database.GetConnection();
@@ -91,6 +93,12 @@ namespace CarReportSystem {
 
             //1つの値を返すsqlを実行する
             var result = command.ExecuteScalar();
+
+            if (result is null)
+                throw new InvalidOperationException("登録した商品のIDを取得できませんでした");
+
+            //SQLLiteのINTERGERはlongとして帰るため、intへ変換する
+            return Convert.ToInt32((long)result);
         }
 
         public void Update(DateTime date, string author, MakerGroup maker, string carName, string report, Image? Picture) {

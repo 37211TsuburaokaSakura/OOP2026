@@ -1,13 +1,19 @@
+using Accessibility;
 using System.ComponentModel;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml.Linq;
 using static CarReportSystem.CarReport;
 
 
 
 
 namespace CarReportSystem {
-    public partial class Form1 : Form {
 
+    public partial class Form1 : Form {
+        
+        private readonly BindingList<CarReport> _products = new();
+        
+        private readonly CarReportRepoSitory _repository = new();
 
         //カーレポート管理用リスト
         BindingList<CarReport> listCarReports = new BindingList<CarReport>();
@@ -46,15 +52,16 @@ namespace CarReportSystem {
                 return;
             }
 
-            var carReport = new CarReport {
-                Date = dtpDate.Value.Date,
-                Author = cbAuthor.Text.Trim(),
-                Maker = GetRadioButtonMaker(),
-                CarName = cbCarName.Text.Trim(),
-                Report = tbReport.Text,
-                Picture = pbPicture.Image,
-            };
-            listCarReports.Add(carReport);
+
+
+                try {
+                    _repository.Add(date, author, maker, carName, report, Picture);
+                ReloadProducts();
+                ClearInput();
+            }
+                catch (Exception ex) {
+                ShowError("登録エラー", ex);
+            }
 
             //入力履歴を登録
             SetCbAuthor(cbAuthor.Text);
@@ -62,6 +69,20 @@ namespace CarReportSystem {
 
             dgvRecords.ClearSelection();
             InputItemsUpdate(); //データグリッドビューを更新したら呼ぶメソッド
+        }
+
+        private void ReloadProducts() {
+            _products.Clear();
+            foreach (var carReport in _repository.GetAll()) {
+                _products.Add(carReport);
+            }
+
+            dgvRecords.ClearSelection();
+        }
+        private void ClearInput() {
+            .Clear();
+            tbPrice.Clear();
+            tbName.Focus();
         }
 
         private MakerGroup GetRadioButtonMaker() {
@@ -317,6 +338,15 @@ namespace CarReportSystem {
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
 
+        }
+
+        private void ShowError(string title, Exception ex) {
+            tsslbMessage.Text = title;
+            MessageBox.Show(
+                ex.Message,
+                title,
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
         }
     }
 }
