@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.Sqlite;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,7 +15,7 @@ using static CarReportSystem.CarReport;
 namespace CarReportSystem {
     public class CarReportRepoSitory {
         public List<CarReport> GetAll() {
-           
+
 
             var products = new List<CarReport>();
 
@@ -25,7 +26,7 @@ namespace CarReportSystem {
             //sqlを実行するためのコマンドプロジェクトを作る
             using var command = connection.CreateCommand();
 
-            command.CommandText = 
+            command.CommandText =
                 """
                 SELECT Id,Date,Author,Maker,CarName,Report,Picture
                 FROM CarReports
@@ -36,7 +37,7 @@ namespace CarReportSystem {
             using var reader = command.ExecuteReader();
 
             while (reader.Read()) {
-                products.Add(new CarReport{
+                products.Add(new CarReport {
                     //0列目:Id
                     Id = reader.GetInt32(0),
 
@@ -63,10 +64,12 @@ namespace CarReportSystem {
                 });
 
             }
-           return products;
+            return products;
         }
 
-        public int Add(DateTime date, string author, MakerGroup maker, string carName, string report,Image? Picture) {
+
+        //レポートの追加
+        public int Add(DateTime value, string text, CarReport carreport) {
 
             //接続オブジェクトを生成する
             using var connection = Database.GetConnection();
@@ -80,28 +83,33 @@ namespace CarReportSystem {
                 INSERT INTO CarReports
                 (Date,Author,Maker,CarName,Report,Picture)
                 VALUES
-                ($date,$auther,$maker,$report,$picture);
+                ($date,$author,$maker,$report,$picture);
 
                 SELECT last_insert_rowid();
                 """;
-
-            command.Parameters.AddWithValue($"date",date);
-            command.Parameters.AddWithValue($"auther",author);
-            command.Parameters.AddWithValue($"maker", maker);
-            command.Parameters.AddWithValue($"report", report);
-            command.Parameters.AddWithValue($"picture", Picture);
+            SetCommand(carreport,command);
+           
 
             //1つの値を返すsqlを実行する
             var result = command.ExecuteScalar();
 
             if (result is null)
-                throw new InvalidOperationException("登録した商品のIDを取得できませんでした");
+                throw new InvalidOperationException("登録したレポートのIDを取得できませんでした");
 
             //SQLLiteのINTERGERはlongとして帰るため、intへ変換する
             return Convert.ToInt32((long)result);
         }
 
-        public void Update(DateTime date, string author, MakerGroup maker, string carName, string report, Image? Picture) {
+        public static void SetCommand(CarReport carreport, SqliteCommand command) {
+            command.Parameters.AddWithValue($"date", carreport.Date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture));
+            command.Parameters.AddWithValue($"author", carreport.Author);
+            command.Parameters.AddWithValue($"maker", carreport.Maker);
+            command.Parameters.AddWithValue($"report", carreport.Report);
+        }
+
+           
+
+        public void Update(CarReport carreport) {
             //接続オブジェクトを生成する
             using var connection = Database.GetConnection();
 
@@ -110,17 +118,13 @@ namespace CarReportSystem {
             //sqlを実行するためのコマンドプロジェクトを作る
             using var command = connection.CreateCommand();
 
-            command.CommandText = 
+            command.CommandText =
                 """
                 SET Date = $date, Author = $author, maker = $maker,
                     CarName = $carName, Report = $report, Picture = $Picture
                 WHERE Id = $id;
                 """;
-            command.Parameters.AddWithValue($"date", date);
-            command.Parameters.AddWithValue($"auther", author);
-            command.Parameters.AddWithValue($"maker", maker);
-            command.Parameters.AddWithValue($"report", report);
-            command.Parameters.AddWithValue($"picture", Picture);
+            SetCommand(carreport, command);
 
             //1つの値を返すsqlを実行する
             command.ExecuteNonQuery();
@@ -136,7 +140,7 @@ namespace CarReportSystem {
             command.CommandText =
                 """
                 DELETE FROM CarReports
-                WHERE Id = $Id;
+                WHERE Id = $id;
                 """;
 
             command.Parameters.AddWithValue("$id", id);

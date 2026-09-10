@@ -10,9 +10,9 @@ using static CarReportSystem.CarReport;
 namespace CarReportSystem {
 
     public partial class Form1 : Form {
-        
+
         private readonly BindingList<CarReport> _products = new();
-        
+
         private readonly CarReportRepoSitory _repository = new();
 
         //カーレポート管理用リスト
@@ -54,12 +54,12 @@ namespace CarReportSystem {
 
 
 
-                try {
-                    _repository.Add(date, author, maker, carName, report, Picture);
+            try {
+                _repository.Add(dtpDate.Value, cbAuthor.Text, GetRadioButtonMaker(), cbCarName.Text, tbReport.Text, pbPicture.Image);
                 ReloadProducts();
                 ClearInput();
             }
-                catch (Exception ex) {
+            catch (Exception ex) {
                 ShowError("登録エラー", ex);
             }
 
@@ -80,9 +80,8 @@ namespace CarReportSystem {
             dgvRecords.ClearSelection();
         }
         private void ClearInput() {
-            .Clear();
-            tbPrice.Clear();
-            tbName.Focus();
+            tbReport.Clear();
+
         }
 
         private MakerGroup GetRadioButtonMaker() {
@@ -348,5 +347,6 @@ namespace CarReportSystem {
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Error);
         }
+
     }
 }
