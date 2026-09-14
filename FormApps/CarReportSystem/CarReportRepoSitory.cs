@@ -69,7 +69,7 @@ namespace CarReportSystem {
 
 
         //レポートの追加
-        public int Add(DateTime value, string text, CarReport carreport) {
+        public int Add(CarReport carreport) {
 
             //接続オブジェクトを生成する
             using var connection = Database.GetConnection();
@@ -83,7 +83,7 @@ namespace CarReportSystem {
                 INSERT INTO CarReports
                 (Date,Author,Maker,CarName,Report,Picture)
                 VALUES
-                ($date,$author,$maker,$report,$picture);
+                ($date,$author,$maker,$carName,$report,$picture);
 
                 SELECT last_insert_rowid();
                 """;
@@ -104,7 +104,14 @@ namespace CarReportSystem {
             command.Parameters.AddWithValue($"date", carreport.Date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture));
             command.Parameters.AddWithValue($"author", carreport.Author);
             command.Parameters.AddWithValue($"maker", carreport.Maker);
+            command.Parameters.AddWithValue($"carName", carreport.CarName);
             command.Parameters.AddWithValue($"report", carreport.Report);
+            var pictureBytes = ImageToBytes(carreport.Picture);
+
+            command.Parameters.AddWithValue(
+                "$picture",
+                pictureBytes is null ? DBNull.Value : pictureBytes);
+
         }
 
            
@@ -120,11 +127,13 @@ namespace CarReportSystem {
 
             command.CommandText =
                 """
+                UPDATE CarReports
                 SET Date = $date, Author = $author, maker = $maker,
-                    CarName = $carName, Report = $report, Picture = $Picture
+                    CarName = $carName, Report = $report, Picture = $picture
                 WHERE Id = $id;
                 """;
             SetCommand(carreport, command);
+            command.Parameters.AddWithValue("$id", carreport.Id);
 
             //1つの値を返すsqlを実行する
             command.ExecuteNonQuery();

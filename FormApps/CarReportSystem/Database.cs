@@ -33,7 +33,7 @@ namespace CarReportSystem {
                 """
                 CREATE TABLE IF NOT EXISTS CarReports(
                  Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                 Data TEXT NOT NULL,
+                 Date TEXT NOT NULL,
                  Author TEXT NOT NULL,
                  Maker INTEGER NOT NULL,
                  CarName TEXT NOT NULL,
