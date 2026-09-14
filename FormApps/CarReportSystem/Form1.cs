@@ -196,8 +196,9 @@ namespace CarReportSystem {
                 return;
             }
 
-            _products.Remove(carReport);
-            
+            _repository.delete(carReport.Id);
+            ReloadCarReports();
+
 
 
             InputItemsUpdate(); //データグリッドビューを更新したら呼ぶメソッド
@@ -233,6 +234,8 @@ namespace CarReportSystem {
              _products[dgvRecords.CurrentRow.Index].Report = tbReport.Text;
              _products[dgvRecords.CurrentRow.Index].Picture = pbPicture.Image;
 
+            _repository.Update(carReport);
+
             SetCbAuthor(cbAuthor.Text.Trim());
             SetCbCarName(cbCarName.Text.Trim());
 
@@ -241,9 +244,12 @@ namespace CarReportSystem {
         }
 
         private void dgvRecords_SelectionChanged(object sender, EventArgs e) {
+            if (dgvRecords.CurrentRow == null) return;
+
             if ((dgvRecords.CurrentRow.DataBoundItem is not CarReport carReport)
                || (!dgvRecords.CurrentRow.Selected)) return;
 
+            if (!dgvRecords.CurrentRow.Selected)return;
 
             dtpDate.Value = carReport.Date;
             cbAuthor.Text = carReport.Author;
