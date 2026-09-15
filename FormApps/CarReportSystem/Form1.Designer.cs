@@ -374,6 +374,7 @@
             ファイルAToolStripMenuItem.Text = "ファイル(&F)";
             // 
             // 開くToolStripMenuItem
+            /*
             // 
             開くToolStripMenuItem.Name = "開くToolStripMenuItem";
             開くToolStripMenuItem.Size = new Size(155, 22);
@@ -386,6 +387,7 @@
             保存ToolStripMenuItem.Size = new Size(155, 22);
             保存ToolStripMenuItem.Text = "保存...";
             保存ToolStripMenuItem.Click += 保存ToolStripMenuItem_Click;
+            */
             // 
             // toolStripSeparator1
             // 

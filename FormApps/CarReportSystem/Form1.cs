@@ -1,6 +1,6 @@
 using Accessibility;
 using System.ComponentModel;
-using System.Runtime.Serialization.Formatters.Binary;
+//using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml.Linq;
 using static CarReportSystem.CarReport;
 
@@ -33,6 +33,7 @@ namespace CarReportSystem {
             try {
                 Settings.Instance.Load();
                 BackColor = Color.FromArgb(Settings.Instance.MainFormBackColor);
+                ReloadCarReports();
             }
             catch (Exception ex) {
                 tsslbMessage.Text = "設定ファイル読み込みエラー";
@@ -293,7 +294,7 @@ namespace CarReportSystem {
             //}
         }
 
-
+/*
         private void 保存ToolStripMenuItem_Click(object sender, EventArgs e) {
             reportSaveFile();
         }
@@ -322,6 +323,8 @@ namespace CarReportSystem {
             }
 
         }
+
+        
         //ファイルオープン処理
         private void reportOpenFile() {
             if (ofdReportFileOpen.ShowDialog() == DialogResult.OK) {
@@ -353,7 +356,7 @@ namespace CarReportSystem {
                 }
             }
         }
-
+        */
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
 
         }
