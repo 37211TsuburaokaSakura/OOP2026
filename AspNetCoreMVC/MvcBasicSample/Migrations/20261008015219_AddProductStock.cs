@@ -37,7 +37,7 @@ namespace MvcBasicSample.Migrations
             migrationBuilder.DropPrimaryKey(
                 name: "PK_Products",
                 table: "Products");
-
+            
             migrationBuilder.DropColumn(
                 name: "Stock",
                 table: "Products");
