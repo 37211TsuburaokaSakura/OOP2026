@@ -8,6 +8,6 @@ public class AppDbContext : DbContext {
     }
 
     //Productsテーブルをpruduct型として問い合わせるためのプロパティ
-    public DbSet<Product> products => Set<Product>();
+    public DbSet<Product> Products => Set<Product>();
 }
 
