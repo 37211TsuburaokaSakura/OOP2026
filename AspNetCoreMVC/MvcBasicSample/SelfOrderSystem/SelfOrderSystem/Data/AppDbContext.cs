@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SelfOrderSystem.Models;
 
-namespace SelfOrderSystem.Data {
+namespace SelfOrderSystem.Data;
     public class AppDbContext:DbContext {
 
        public AppDbContext(DbContextOptions<AppDbContext>options)
@@ -11,4 +11,4 @@ namespace SelfOrderSystem.Data {
         public DbSet<Category> Categories => Set<Category>();
         public DbSet<Product> Products => Set<Product>();
     }
-}
+

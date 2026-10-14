@@ -13,6 +13,13 @@ builder.Services.AddDbContext<AppDbContext>(
 //////////
 
 var app = builder.Build();
+//’Ç‰Á 
+if (app.Environment.IsDevelopment()) {
+    using var scope = app.Services.CreateScope();
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    await SeedData.InitializeAsync(db);
+}
+/////
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment()) {
@@ -33,3 +40,5 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
+

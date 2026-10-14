@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SelfOrderSystem.Models {
+namespace SelfOrderSystem.Models;
     public class Category {
         public int Id { get; set; }//主キー
 
@@ -8,7 +8,7 @@ namespace SelfOrderSystem.Models {
         [StringLength(50)]
         public string Name { get; set; } = string.Empty; //カテゴリ名
 
-        public int soltOrder { get; set; } //表示順
-        public List<Product> Products { get; set; } = new();
-    }
+        public int SortOrder { get; set; } //表示順
+        public List<Product> Products { get; set; } = new(); // 所属商品
 }
+
