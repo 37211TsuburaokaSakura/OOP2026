@@ -21,6 +21,7 @@ public class KeywordProcessor : TextProcessor {
             count++;
             pos += keyword!.Length;
         }
+        //count += line.Split(keyord).Length -1;
     }
 
     protected override void Terminate() {
