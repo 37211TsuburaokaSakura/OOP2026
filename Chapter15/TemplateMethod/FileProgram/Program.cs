@@ -2,7 +2,7 @@
 
 string path = @"C:\Users\infosys\source\repos\OOP2026\Chapter14\Section04\Program.cs";
 
-TextProcessor.Run<KeywordProcessor>(path);
+TextProcessor.Run<>(path);
 
 public class KeywordProcessor : TextProcessor {
     private int count;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Excercize03;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -16,8 +17,15 @@ namespace TextFileProcesserDI {
         public void Run(string fileName) {
             _service.Initialize(fileName);
             var lines = File.ReadLines(fileName);
+
             foreach (var line in lines) {
-                _service.Execute(line);
+              ;
+                if (!_service.Execute(line)) {
+                    break;
+                }
+
+              
+
             }
             _service.Terminate();
         }
