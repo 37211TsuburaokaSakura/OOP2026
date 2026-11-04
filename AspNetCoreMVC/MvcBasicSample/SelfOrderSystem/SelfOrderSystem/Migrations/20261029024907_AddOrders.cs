@@ -12,7 +12,7 @@ namespace SelfOrderSystem.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.RenameColumn(
-                name: "soltOrder",
+                name: "sortOrder",
                 table: "Categories",
                 newName: "SortOrder");
 
@@ -89,7 +89,7 @@ namespace SelfOrderSystem.Migrations
             migrationBuilder.RenameColumn(
                 name: "SortOrder",
                 table: "Categories",
-                newName: "soltOrder");
+                newName: "sortOrder");
         }
     }
 }

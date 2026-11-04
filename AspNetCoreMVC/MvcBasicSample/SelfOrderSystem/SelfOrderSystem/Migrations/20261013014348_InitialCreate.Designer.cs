@@ -37,7 +37,7 @@ namespace SelfOrderSystem.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("soltOrder")
+                    b.Property<int>("sortOrder")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
