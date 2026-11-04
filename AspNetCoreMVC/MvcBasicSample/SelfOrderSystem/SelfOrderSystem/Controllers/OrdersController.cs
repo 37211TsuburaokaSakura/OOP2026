@@ -73,7 +73,7 @@ public class OrdersController : Controller {
         _db.Orders.Add(order);           // 注文と明細を登録対象にする 
         await _db.SaveChangesAsync();   // DB保存の完了を待つ 
         _cart.Clear();                  // 保存成功後にカートを空にする 
-        return RedirectToAction(nameof(Complete),
+        return RedirectToAction(nameof(Complete), 
             new { id = order.PublicId });
     }
     [HttpGet]
