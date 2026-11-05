@@ -28,6 +28,7 @@ namespace Section03 {
             await Task.Run(() => {
                 Thread.Sleep(milliseconds);
             });
+            
             sw.Stop();
             return sw.ElapsedMilliseconds;
         }

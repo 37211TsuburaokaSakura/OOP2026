@@ -1,4 +1,4 @@
-html {
+﻿html {
   font-size: 14px;
 }
 
@@ -20,3 +20,47 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+/* AIデザイン演習用の追加スタイル */
+body {
+    background: #b8bec4;
+    background: linear-gradient( 180deg, #d6dadc 0%, #bcc2c5 40%, #a8afb4 100% );
+    color: #444;
+}
+
+/* 全体を少し色褪せさせる */
+main,
+.container {
+    background: rgba(245,245,245,.85);
+    border: 1px solid #9da7ae;
+    box-shadow: 0 0 30px rgba(0,0,0,.08);
+    backdrop-filter: blur(3px);
+}
+
+/* 見出し */
+h1, h2, h3 {
+    color: #646c72;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+}
+
+/* ボタン */
+.btn-primary {
+    background: #8f9ca5;
+    border-color: #7f8b93;
+}
+
+    .btn-primary:hover {
+        background: #7e8a92;
+    }
+
+/* 入力欄 */
+.form-control {
+    background: #f7f7f7;
+    border-color: #b3babf;
+}
+
+/* カード */
+.card {
+    background: #ececec;
+    border:
