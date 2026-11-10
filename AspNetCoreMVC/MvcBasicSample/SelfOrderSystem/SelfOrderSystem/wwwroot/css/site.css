@@ -35,4 +35,144 @@ body {
     justify-content: center;
     color: #666;
     font-size: 0.95rem;
-} 
+}
+/* ===== 浅葱色テーマ ===== */
+
+/* =========================
+   浅葱色 × 朱鷺色テーマ
+   ========================= */
+
+:root {
+    --asagi: #00A3AF; /* 浅葱色 */
+    --asagi-dark: #00838D; /* 濃い浅葱色 */
+    --kuchiba: #877764; /* 朽葉色 */
+    --toki-dark: #E68CB1; /* 濃い朱鷺色 */
+    --asagi-light: #EAF8F9; /* 薄い浅葱色 */
+}
+
+/* 背景 */
+body {
+    background-color: #f8fbfb;
+    margin-bottom: 60px;
+}
+
+/* 見出し */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--asagi-dark);
+}
+
+/* 商品カード */
+.card {
+    border: 1px solid #d7ecee;
+    transition: all 0.2s ease;
+}
+
+    .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 163, 175, 0.2);
+    }
+
+/* 選択中のカテゴリ */
+.btn-dark {
+    background-color: var(--asagi);
+    border-color: var(--asagi);
+    color: white;
+}
+
+    .btn-dark:hover {
+        background-color: var(--kuchiba);
+        border-color: var(--kuchiba);
+        color: white;
+    }
+
+/* 未選択カテゴリ */
+.btn-outline-dark {
+    color: var(--asagi);
+    border-color: var(--asagi);
+}
+
+    .btn-outline-dark:hover {
+        background-color: var(--kuchiba);
+        border-color: var(--kuchiba);
+        color: white;
+    }
+
+/* カートに追加ボタン */
+.btn-primary {
+    background-color: var(--asagi);
+    border-color: var(--asagi);
+    color: white;
+}
+
+    .btn-primary:hover {
+        background-color: var(--kuchiba);
+        border-color: var(--kuchiba);
+        color: white;
+    }
+
+/* カートを見るボタン */
+.btn-light {
+    background-color: var(--asagi);
+    border-color: var(--asagi);
+    color: white;
+}
+
+    .btn-light:hover {
+        background-color: var(--kuchiba);
+        border-color: var(--kuchiba);
+        color: white;
+    }
+
+/* カート表示エリア */
+.alert-dark {
+    background-color: var(--asagi-light);
+    border-color: var(--asagi);
+    color: #333;
+}
+
+/* フォーカス時 */
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem rgba(0, 163, 175, 0.35);
+}
+
+/* 商品写真 */
+.so-product-photo {
+    display: block;
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    background: #f0eee9;
+}
+
+.so-product-photo--empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+body {
+    margin-bottom: 60px;
+
+    background-color: #f8fbfb;
+
+    background-image:
+        linear-gradient(45deg,
+            rgba(0, 163, 175, 0.08) 25%,
+            transparent 25%,
+            transparent 75%,
+            rgba(0, 163, 175, 0.08) 75%),
+        linear-gradient(-45deg,
+            rgba(0, 163, 175, 0.08) 25%,
+            transparent 25%,
+            transparent 75%,
+            rgba(0, 163, 175, 0.08) 75%);
+
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+}
