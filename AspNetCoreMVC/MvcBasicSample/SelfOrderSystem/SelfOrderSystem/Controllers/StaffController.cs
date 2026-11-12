@@ -2,14 +2,21 @@
 using Microsoft.EntityFrameworkCore; // EF Coreの非同期処理を使用 
 using SelfOrderSystem.Data;          // AppDbContextを使用 
 using SelfOrderSystem.Models; // OrderStatusを使用
+using Microsoft.AspNetCore.SignalR;
+using SelfOrderSystem.Hubs;
 
 namespace SelfOrderSystem.Controllers;
 
 public class StaffController : Controller {
     private readonly AppDbContext _db; // DBへの接続を担当 
+    private readonly IHubContext<StaffOrdersHub> _hubContext;
+    private readonly ILogger<StaffController> _logger;
 
-    public StaffController(AppDbContext db) {
-        _db = db; // DIで受け取ったものを保存 
+    // 既存のStaffControllerコンストラクタを置換 
+    public StaffController(AppDbContext db, IHubContext<StaffOrdersHub> hubContext, ILogger<StaffController> logger) {
+        _db = db; // 既存のDB操作 
+        _hubContext = hubContext; // SignalRで通知 
+        _logger = logger; // 通知エラーを記録 
     }
 
 
@@ -46,6 +53,20 @@ public class StaffController : Controller {
         } else {
             // 提供済みの注文は変更しない 
             return RedirectToAction(nameof(Index));
+        }
+
+        try {
+            // この注文を見ているお客様だけに通知 
+            await _hubContext.Clients
+                .Group($"order-{order.PublicId:N}")
+                .SendAsync("OrderStatusChanged");
+
+            // 他の店舗画面にも一覧変更を通知 
+            await _hubContext.Clients.All.SendAsync("OrdersChanged");
+        }
+        catch (Exception ex) {
+            // 保存した注文状態は取り消さない 
+            _logger.LogWarning(ex, "状態更新の通知に失敗");
         }
 
         await _db.SaveChangesAsync(); // 変更をDBへ保存 
