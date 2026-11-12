@@ -13,7 +13,7 @@ public class StaffController : Controller {
     private readonly ILogger<StaffController> _logger;
 
     // 既存のStaffControllerコンストラクタを置換 
-    public StaffController(AppDbContext db, IHubContext<StaffOrdersHub> hubContext, ILogger<StaffController> logger) {
+    public StaffController(AppDbContext db,IHubContext<StaffOrdersHub> hubContext,ILogger<StaffController> logger) {
         _db = db; // 既存のDB操作 
         _hubContext = hubContext; // SignalRで通知 
         _logger = logger; // 通知エラーを記録 
@@ -55,6 +55,7 @@ public class StaffController : Controller {
             return RedirectToAction(nameof(Index));
         }
 
+        await _db.SaveChangesAsync(); // 変更をDBへ保存 
         try {
             // この注文を見ているお客様だけに通知 
             await _hubContext.Clients
@@ -69,7 +70,6 @@ public class StaffController : Controller {
             _logger.LogWarning(ex, "状態更新の通知に失敗");
         }
 
-        await _db.SaveChangesAsync(); // 変更をDBへ保存 
         return RedirectToAction(nameof(Index)); // 一覧へ戻る 
     }
 }
