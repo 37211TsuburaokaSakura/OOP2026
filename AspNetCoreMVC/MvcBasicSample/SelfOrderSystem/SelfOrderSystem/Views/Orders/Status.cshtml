@@ -32,7 +32,7 @@
     });
 
     // 切断から復旧したらグループへ入り直す
-    orderConnection.onreconnected(async () => {
+    orderConnection.onreconnected(async () => {　
         await joinOrder();
         window.location.reload();
     });
