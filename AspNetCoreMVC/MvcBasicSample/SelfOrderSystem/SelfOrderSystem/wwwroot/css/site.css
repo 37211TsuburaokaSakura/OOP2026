@@ -36,7 +36,14 @@ body {
     color: #666;
     font-size: 0.95rem;
 }
-/* ===== 浅葱色テーマ ===== */
+
+/*PCではカートをスクロールに追従 */
+@media (min-width:992px) {
+    .so-cart-sidebar {
+        position:sticky;
+        top:90px;
+    }
+}
 
 /* =========================
    浅葱色 × 朱鷺色テーマ
