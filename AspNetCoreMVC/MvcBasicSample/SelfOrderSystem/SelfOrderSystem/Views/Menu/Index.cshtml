@@ -57,8 +57,8 @@
                             }
 
                             @* 商品カード内へ追加する *@ 
-                                        @* 商品IDをPOSTしてCartController.Addへ送る *@ 
-                                        <form asp-controller="Cart" asp-action="Add" method="post">
+                                            @* 商品IDをPOSTしてCartController.Addへ送る *@ 
+                                            <form asp-controller="Cart" asp-action="Add" method="post">
                                 <input type="hidden" name="productId" value="@product.Id" />
 
                                 @if (product.IsSoldOut) {
@@ -80,20 +80,43 @@
     </div>
 
     @*右側　カード概要*@
-    <div class=" col-12 col-lg-3">
+    <div class="col-12 col-lg-3">
         <aside class="card so-cart-sidebar">
-            <div class="card-body">
-                <h2 class="h5">カート</h2>
 
-                <p>@Model.CartItemCount 点</p>
+            <div class="card-header p-0">
+                <button class="btn w-100 text-start d-flex justify-content-between align-items-center"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#cartSummary">
+                    <span>カート (@Model.CartItemCount 点)</span>
+                    <span>▼</span>
+                </button>
+            </div>
 
-                <p class="fw-bold ">
-                    合計 @Model.CartTotal.ToString("NO")円
-                </p>
+            <div id="cartSummary" class="collapse show">
+                <div class="card-body">
 
-                <a asp-controller="Cart" asp-action="Index"
-                class=" btn btn-primary w-100">
-            カートを確認</a>
+                    @if (Model.CartItemNames.Any()) {
+                        <div style="max-height:200px; overflow-y:auto;">
+                            <ul class="list-group mb-3">
+                                @foreach (var item in Model.CartItemNames) {
+                                    <li class="list-group-item">
+                                        @item
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    }
+                    <p class="fw-bold">
+                        合計 @Model.CartTotal.ToString("N0")円
+                    </p>
+
+                    <a asp-controller="Cart"
+                       asp-action="Index"
+                       class="btn btn-primary w-100">
+                        カートを確認
+                    </a>
+                </div>
             </div>
 
         </aside>
@@ -110,4 +133,18 @@
         <a class="btn btn-light" asp-controller="Cart" asp-action="Index">カートを見る</a>
     </div>
 }
+
+<script>
+    window.addEventListener("beforeunload", function () {
+        sessionStorage.setItem("scrollY", window.scrollY);
+    });
+
+    window.addEventListener("load", function () {
+        const scrollY = sessionStorage.getItem("scrollY");
+
+        if (scrollY !== null) {
+            window.scrollTo(0, parseInt(scrollY));
+        }
+    });
+</script>
 

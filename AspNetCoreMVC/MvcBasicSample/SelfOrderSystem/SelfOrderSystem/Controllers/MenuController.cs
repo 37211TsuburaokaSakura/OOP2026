@@ -42,8 +42,12 @@ public class MenuController :Controller{
             Categories = categories,
             Products = products,
             SelectedCategoryId = categoryId,
-            CartItemCount = cartItems.Sum(x => x.Quantity),               // 商品数量の合計 
-            CartTotal = cartItems.Sum(x => x.LineTotal),                   // 小計の合計 
+            CartItemCount = cartItems.Sum(x => x.Quantity),
+            CartTotal = cartItems.Sum(x => x.LineTotal),
+
+            CartItemNames = cartItems
+         .Select(x => x.ProductName)
+         .ToList()
         };
 
         return View(vm);
