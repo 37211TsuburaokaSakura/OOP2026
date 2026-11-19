@@ -87,7 +87,8 @@ public class OrderService : IOrderService {
         result.PublicId = order.PublicId;
 
         try {
-            await _hubContext.Clients.All.SendAsync("OrdersChanged");
+            // 変更後：スタッフグループだけに通知 
+            await _hubContext.Clients.Group("staff").SendAsync("OrdersChanged");
 
         }
         catch (Exception ex) {
